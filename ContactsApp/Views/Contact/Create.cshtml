@@ -1,0 +1,126 @@
+﻿@model ContactsApp.Models.ContactDTO
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<style>
+    
+    body {
+        background-color: #f4f7f6; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    
+    .page-header {
+        color: #4CAF50;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .form-horizontal .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #fff; 
+    }
+
+    .btn-submit {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-submit:hover {
+            background-color: #45a049;
+        }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 16px;
+        color: #2196F3;
+        text-decoration: none;
+    }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+    
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+
+<div class="form-container">
+    <h2 class="page-header">Create a New Contact</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Contact Details</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.first_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.first_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.last_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.last_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.last_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create Contact" class="btn-submit" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        <a href="@Url.Action("Index")" class="back-link">Back to Contact List</a>
+    </div>
+</div>
