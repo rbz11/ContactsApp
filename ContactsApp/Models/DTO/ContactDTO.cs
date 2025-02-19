@@ -9,14 +9,20 @@ namespace ContactsApp.Models
     // Data Transfer Object (DTO) representing a contact
     public class ContactDTO
     {
-        public int ContactId { get; set; } // Unique identifier for each contact
+        public int Id { get; set; }
 
-        public string first_name { get; set; } // Stores the contact's first name
+        [Required]
+        public string FirstName { get; set; }
 
-        public string last_name { get; set; } // Stores the contact's last name
+        [Required]
+        public string LastName { get; set; }
 
-        public string email { get; set; } // Stores the contact's email address
+        [Required, EmailAddress]
+        public string Email { get; set; }
 
-        public string phone { get; set; } // Stores the contact's phone number
+        [Required]
+        public string Phone { get; set; }
+
+        public string Category { get; set; } 
     }
 }
